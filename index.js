@@ -218,6 +218,9 @@ Markers.prototype.resolve = function resolve (input) {
          * @returns {string}
          */
         function replacePlaceholdersRecursivelyIn (string) {
+          //TODO waiting for https://github.com/nknapp/promised-handlebars/issues/25 
+          if(typeof string !== 'string') return string;
+          
           return string.replace(self.regex, function (match, index, gt) {
             // Check whether promise result must be escaped
             var resolvedValue = promiseResults[index]
